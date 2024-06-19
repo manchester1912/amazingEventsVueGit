@@ -94,14 +94,15 @@
         <!-- checkbox codes and search bar -->
 
         <div id="checkboxContainer" class="row align-items-center text-white">
+            {{superFiltro}}
             <div id="checkboxFather" class="col-12 col-md-8 col-lg-9  d-flex justify-content-center flex-wrap">
-<div v-for="category in categories">
-    <input class="mx-1" type="checkbox" name="event" :value="category.toLowerCase()">
-    <label class="me-1">{{category}}</label>
-</div>
+                <div v-for="category in categories">
+                    <input v-model="categoriasSeleccionadas" class="mx-1" type="checkbox" name="event" :value="category">
+                    <label class="me-1">{{category}}</label>
+                </div>
             </div>
             <div class="col-12 col-md-4 col-lg-3 mt-2 d-flex justify-content-center order-2">
-                <input id="search" class="w-75 rounded" type="search">
+                <input v-model="textoBuscar" id="search" class="w-75 rounded" type="search">
             </div>
         </div>
 
@@ -110,15 +111,20 @@
         <!-- card codes -->
 
         <div id="fatherContainer">
-<div v-for="event in arrayEvents" class="cards pt-2 my-2 mx-2 text-white">
-    <img :src="event.image" alt="">
-    <h2>{{event.name}}</h2>
-    <p>{{event.description}}</p>
-    <div class="price fw-bold fs-5 pb-2">
-        <p>Price: {{event.price}} USD</p>
-        <a :href="'/pages/details.html?id=' + event._id" class="btn btn-danger">Details</a>
-    </div>
+
+<div v-if="arrayEvents.length == 0" class="noResults">
+<h2>"Whithout Results"</h2>
 </div>
+
+            <div v-for="event in arrayEvents" class="cards pt-2 my-2 mx-2 text-white">
+                <img :src="event.image" alt="">
+                <h2>{{event.name}}</h2>
+                <p>{{event.description}}</p>
+                <div class="price fw-bold fs-5 pb-2">
+                    <p>Price: {{event.price}} USD</p>
+                    <a :href="'/pages/details.html?id=' + event._id" class="btn btn-danger">Details</a>
+                </div>
+            </div>
         </div>
 
     </main>
