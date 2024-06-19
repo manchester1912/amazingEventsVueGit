@@ -1,0 +1,102 @@
+.archors {
+        width: auto;
+        transition: all 1s;
+}
+
+.archors:hover {
+        text-decoration: underline;
+        color: red;
+}
+
+.border1912 {
+        border: 6px solid grey;
+        border-radius: 15px;
+        min-height: 46.5vh;
+}
+
+.carousel1 {
+        height: 35vh
+}
+
+.carousel1 img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
+
+}
+
+.body {
+        background-image: url(/resources/fondoBody.webp);
+        background-size: cover;
+}
+
+.bodyDetails {
+        background-color: lightgrey;
+}
+
+.tableEvents table,
+th,
+td {
+        border: 2px solid black;
+}
+
+th,
+td {
+        padding: 0 0.5vw;
+}
+
+.container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh
+}
+
+
+/* styles for javascript*/
+
+.cards {
+        border: 3px solid red;
+        width: 350px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+
+        border-radius: 15px;
+
+}
+
+.cards img {
+        width: 300px;
+        max-height: 45%;
+        margin-bottom: 2vh;
+        border-radius: 15px;
+        border: 3px solid red;
+
+}
+
+#fatherContainer {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+
+}
+
+.price {
+        display: flex;
+        justify-content: space-between;
+        width: 90%;
+        align-items: center;
+}
+
+#noResults {
+
+        color: red;
+        text-align: center;
+        display: none;
+        padding: 16vh 0;
+}
