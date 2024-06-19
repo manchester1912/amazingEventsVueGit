@@ -1,26 +1,3 @@
-// import * as moduleFuntions from "./allFuntions.js"
-
-// const linkAmazing = "https://aulamindhub.github.io/amazing-api/events.json"
-
-// fetch(linkAmazing)
-//   .then(response => response.json())
-//   .then(data => {
-//     let checkDiv = document.getElementById("checkboxFather")
-//     let categories = Array.from(new Set(data.events.map(event => event.category)))
-//     let categoryValue = categories.map(category => ({ category }))
-
-//     moduleFuntions.cardsHtml(data.events)
-//     moduleFuntions.createCheck(categoryValue)
-//     moduleFuntions.cardsHtml(data.events)
-
-//     let searchbar = document.getElementById("search")
-//     searchbar.addEventListener("input", () => moduleFuntions.filterCards(data.events))
-
-//     checkDiv.addEventListener("change", () => moduleFuntions.filterCards(data.events))
-
-//   })
-
-
 const linkAmazing = "https://aulamindhub.github.io/amazing-api/events.json"
 
 const { createApp } = Vue
@@ -30,8 +7,12 @@ const newPage = createApp({
 
   data() {
     return {
+      currentDate: {},
       arrayEvents: [],
-      categories: []
+      arrayEventsBK: [],
+      categories: [],
+      textoBuscar:"",
+      categoriasSeleccionadas: []
     }
   },
 
@@ -43,15 +24,30 @@ this.traerData(linkAmazing)
     traerData(url) {
       fetch(url).then(respuesta => respuesta.json())
         .then(data => {
+          this.currentDate = data.currentDate
           this.arrayEvents = data.events
+          this.arrayEventsBK = data.events
           this.categories = Array.from(new Set( this.arrayEvents.map(event=> event.category)))
-          console.log(this.categories);
+          console.log(this.arrayEvents)
+          console.log(this.currentDate)
         })
+
+
+        
     }
 
   },
   computed: {
+    superFiltro(){
+    let filtroTexto = this.arrayEventsBK.filter(event => event.name.toLowerCase().includes(this.textoBuscar.toLowerCase()))
 
+    if (this.categoriasSeleccionadas.length > 0) {
+      this.arrayEvents = filtroTexto.filter(event => 
+        this.categoriasSeleccionadas.includes(event.category))
+      
+    }else{this.arrayEvents = filtroTexto}
+        
+    }
   }
 
 }).mount("#containerVue")

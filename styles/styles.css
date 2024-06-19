@@ -100,3 +100,10 @@ td {
         display: none;
         padding: 16vh 0;
 }
+
+.noResults{
+        height: 75vh;
+        color: red;
+        display: flex;
+        align-items: center;
+}
